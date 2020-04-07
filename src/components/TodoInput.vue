@@ -10,7 +10,7 @@ export default {
     data(){
         return{
             newTodoItem: ''
-        }
+        };
     },
 
     methods:{
@@ -21,7 +21,7 @@ export default {
           if (this.newTodoItem !== '') {
               var value = this.newTodoItem && this.newTodoItem.trim();
               localStorage.setItem(value,value);
-              clearInputbox(); //input 초기화 
+              this.clearInputbox(); //input 초기화 
           }
           },
         clearInputbox() {
@@ -30,7 +30,7 @@ export default {
 
         }
     }
-}
+};
 </script>
 <style >
 

@@ -2,7 +2,10 @@
     
 <section> 
 <ul>
- <li v-for="todoItem in todoItems"> {{ todoItem } } </li>
+ <li v-for="(todoItem, index) in todoItems" :key="todoItem">
+      {{todoItem }}
+     <button v-on:click="removeTodo(todoItem, index)"> 삭제 </button>
+ </li>
 </ul>
 </section>
 
@@ -16,17 +19,23 @@ export default {
     data(){
         return{
             todoItems: []
-        }
+        };
     },
     created(){
         if(localStorage.length > 0){
             for(var i =0; i < localStorage.length; i++){
-                this.todoItem.push(localStorage.key(i));
+                this.todoItems.push(localStorage.key(i));
             }
+        }
+    },
+    methods: {
+        removeTodo(todoItem, index){
+        localStorage.removeItem(todoItem);
+        this.todoItems.splice(index, 1);
         }
     }
     
-}
+};
 
 </script>
 
