@@ -2,7 +2,7 @@
     
 <section> 
 <ul>
- <li v-for="(todoItem, index) in todoItems" :key="todoItem">
+ <li v-for="(todoItem, index) in propsdata" :key="todoItem">
       {{todoItem }}
      <button v-on:click="removeTodo(todoItem, index)"> 삭제 </button>
  </li>
@@ -28,7 +28,8 @@ export default {
             }
         }
     },
-    methods: {
+    props:['propsdata'],
+     methods: {
         removeTodo(todoItem, index){
         localStorage.removeItem(todoItem);
         this.todoItems.splice(index, 1);

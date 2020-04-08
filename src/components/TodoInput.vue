@@ -20,7 +20,8 @@ export default {
           //값이 빈 값인지 체크 빈 값이 아니면 로직 수행
           if (this.newTodoItem !== '') {
               var value = this.newTodoItem && this.newTodoItem.trim();
-              localStorage.setItem(value,value);
+              this.$emit('addTodo', value);// APP 컴포넌트로 이벤트 전달
+              //localStorage.setItem(value,value);
               this.clearInputbox(); //input 초기화 
           }
           },
