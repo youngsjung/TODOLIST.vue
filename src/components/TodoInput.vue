@@ -1,6 +1,6 @@
 <template>
     <div> 
-        <input type="text" v-model="newTodoItem">
+        <input type="text" v-model="newTodoItem" v-on:keyup.enter="addTodo">
         <button v-on:click="addTodo">추가 </button>
     </div>
 </template>
@@ -10,7 +10,7 @@ export default {
     data(){
         return{
             newTodoItem: ''
-        };
+        }
     },
 
     methods:{
@@ -23,7 +23,7 @@ export default {
               this.$emit('addTodo', value);// APP 컴포넌트로 이벤트 전달
               //localStorage.setItem(value,value);
               this.clearInputbox(); //input 초기화 
-          }
+            }
           },
         clearInputbox() {
             this.newTodoItem = '';
